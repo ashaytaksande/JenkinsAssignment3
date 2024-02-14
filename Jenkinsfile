@@ -10,7 +10,7 @@ pipeline {
                 lable 'TestNode'
             }
             when {
-                expressioin {
+                expression {
                     branchName == 'develop'
                 }
             }
