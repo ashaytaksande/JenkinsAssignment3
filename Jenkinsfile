@@ -19,6 +19,7 @@ pipeline {
                 ls -al
                 '''
             }
+        }    
             stage('trigger another job') {
                 steps {
                     build 'prod'
@@ -29,6 +30,5 @@ pipeline {
                     sh 'echo both jobs completed successfully'
                 }
             }
-        }
     }
 }
