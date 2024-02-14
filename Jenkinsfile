@@ -1,13 +1,12 @@
 pipeline {
     agent 'any'
     environment {
-        branchName="{env.GIT_BRANCH.split('/').size() == 1 ? env.GIT_BRANCH.split('/')[-1] : env.GIT_BRANCH.split('/')[1..-1].join('/')}"
-        //repository=""
+        branchName = "{env.GIT_BRANCH.split('/').size() == 1 ? env.GIT_BRANCH.split('/')[-1] : env.GIT_BRANCH.split('/')[1..-1].join('/')}"
     }
     stages {
-        stage ('Once push is made to “develop” branch in git, trigger job “test"') {
+        stage('Once push is made to “develop” branch in git, trigger job “test"') {
             agent {
-                lable 'TestNode'
+                label 'TestNode'
             }
             when {
                 expression {
@@ -20,12 +19,12 @@ pipeline {
                 ls -al
                 '''
             }
-            stage ('trigger another job') {
+            stage('trigger another job') {
                 steps {
                     build 'prod'
                 }
             }
-            stage ('message') {
+            stage('message') {
                 steps {
                     sh 'echo both jobs completed successfully'
                 }
