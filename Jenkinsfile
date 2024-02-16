@@ -5,7 +5,9 @@ pipeline {
     }
     stages {
         stage('branchname') {
-            echo "branchName"
+            steps {
+                sh "echo ${branchName}"
+            }
         }
         stage('Once push is made to “develop” branch in git, trigger job “test"') {
             agent {
