@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('branchname') {
             steps {
-                sh "echo ${branchName}"
+                sh 'echo ${branchName}'
             }
         }
         stage('Once push is made to “develop” branch in git, trigger job “test"') {
@@ -24,7 +24,7 @@ pipeline {
                 ls -al
                 '''
             }
-        }    
+        }
             stage('trigger another job') {
                 steps {
                     build 'ProdJob'
