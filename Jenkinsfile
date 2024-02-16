@@ -4,7 +4,6 @@ pipeline {
         branchName = "${env.GIT_BRANCH.split('/').size() == 1 ? env.GIT_BRANCH.split('/')[-1] : env.GIT_BRANCH.split('/')[1..-1].join('/')}"
     }
     stages {
-        }
         stage('Once push is made to “develop” branch in git, trigger job “test"') {
             agent {
                 label 'TestNode'
@@ -16,7 +15,7 @@ pipeline {
             }
             steps {
                 sh '''
-                echo 'copied git files to "${WORKSPACE}"'
+                echo copied git files to "${WORKSPACE}"
                 ls -al
                 '''
             }
