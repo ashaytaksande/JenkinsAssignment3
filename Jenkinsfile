@@ -4,6 +4,11 @@ pipeline {
         branchName = "{env.GIT_BRANCH.split('/').size() == 1 ? env.GIT_BRANCH.split('/')[-1] : env.GIT_BRANCH.split('/')[1..-1].join('/')}"
     }
     stages {
+        stage('branchname') {
+            steps {
+                echo " ${branchName}"
+            }
+        }
         stage('Once push is made to “develop” branch in git, trigger job “test"') {
             agent {
                 label 'TestNode'
